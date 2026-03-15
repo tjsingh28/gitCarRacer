@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Car Huddle Racing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <!-- Menu Screen -->
+    <div id="menu-screen" class="screen active">
+        <div class="menu-container">
+            <h1 class="game-title">🏎️ CAR HUDDLE</h1>
+            <p class="subtitle">Race together. Huddle through obstacles. Win as a pack.</p>
+
+            <div class="menu-section">
+                <label for="player-name">Your Name</label>
+                <input type="text" id="player-name" maxlength="12" placeholder="Racer" autocomplete="off">
+            </div>
+
+            <div class="menu-section">
+                <label>Car Color</label>
+                <div id="color-picker" class="color-picker"></div>
+            </div>
+
+            <div class="menu-actions">
+                <button id="btn-create" class="btn btn-primary">Create Room</button>
+                <div class="divider">— or —</div>
+                <div class="join-row">
+                    <input type="text" id="room-code" maxlength="4" placeholder="CODE" autocomplete="off">
+                    <button id="btn-join" class="btn btn-secondary">Join</button>
+                </div>
+            </div>
+
+            <p class="player-count">Supports 1–15 players</p>
+        </div>
+    </div>
+
+    <!-- Lobby Screen -->
+    <div id="lobby-screen" class="screen">
+        <div class="lobby-container">
+            <h2>Room: <span id="lobby-code">----</span></h2>
+            <p class="lobby-hint">Share this code with friends</p>
+            <div id="player-list" class="player-list"></div>
+            <button id="btn-start" class="btn btn-primary" style="display:none">Start Race</button>
+            <button id="btn-leave" class="btn btn-danger">Leave</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <canvas id="game-canvas"></canvas>
+        <div id="hud">
+            <div id="hud-lap" class="hud-item">Lap 1/5</div>
+            <div id="hud-pos" class="hud-item">Pos: —</div>
+            <div id="hud-speed" class="hud-item">0 km/h</div>
+            <div id="hud-huddles" class="hud-item">Huddles: 0</div>
+            <div id="hud-powerup" class="hud-item hud-powerup"></div>
+        </div>
+        <div id="countdown" class="countdown hidden"></div>
+        <div id="minimap-container">
+            <canvas id="minimap-canvas" width="160" height="160"></canvas>
+        </div>
+        <!-- Mobile controls -->
+        <div id="mobile-controls" class="mobile-controls">
+            <button id="ctrl-left" class="ctrl-btn ctrl-left">◀</button>
+            <button id="ctrl-right" class="ctrl-btn ctrl-right">▶</button>
+            <button id="ctrl-gas" class="ctrl-btn ctrl-gas">▲</button>
+            <button id="ctrl-brake" class="ctrl-btn ctrl-brake">▼</button>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="results-container">
+            <h2>🏁 Race Results</h2>
+            <div id="results-list" class="results-list"></div>
+            <button id="btn-rematch" class="btn btn-primary">Rematch</button>
+            <button id="btn-menu" class="btn btn-secondary">Main Menu</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
